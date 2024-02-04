@@ -1,16 +1,28 @@
-<!DOCTYPE html>
+Q3. Difference in Days.
+var dateDiffInDays = function (date1, date2) {
+  // Convert input dates to milliseconds since UTC epoch
+  const utcDate1 = Date.UTC(
+    parseInt(date1.substring(0, 4)),
+    parseInt(date1.substring(5, 7)) - 1,
+    parseInt(date1.substring(8, 10))
+  );
 
-<html>
+  const utcDate2 = Date.UTC(
+    parseInt(date2.substring(0, 4)),
+    parseInt(date2.substring(5, 7)) - 1,
+    parseInt(date2.substring(8, 10))
+  );
 
-<head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+  // Calculate the difference in milliseconds between the two dates
+  const timeDiff = utcDate2 - utcDate1;
 
-<body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  // Convert the difference to days
+  const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-</body>
+  return daysDiff;
+};
 
-</html>
+// Example usage:
+const dateOne = prompt("Enter Start Date (YYYY-MM-DD):");
+const dateTwo = prompt("Enter End Date (YYYY-MM-DD):");
+alert(dateDiffInDays(dateOne, dateTwo));
